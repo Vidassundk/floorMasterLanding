@@ -9,6 +9,7 @@ interface ButtonProps {
   accessabilityLabel: string;
   onClick?: () => void;
   ghost?: boolean;
+  noPadding?: boolean;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -19,11 +20,14 @@ const Button: React.FC<ButtonProps> = ({
   className,
   iconClassName,
   accessabilityLabel,
+  noPadding = false,
 }) => {
   return (
     <a
       href={href}
-      className={`flex items-center rounded-full justify-center gap-2 py-2 px-3 text-nowrap font-inter text-sm font-semibold transition-opacity duration-200 focus:ring-4 hover:bg-foreground hover:text-background focus:bg-foreground focus:text-background ${className}`}
+      className={`flex items-center rounded-full justify-center gap-2 ${
+        !noPadding ? "py-3 px-5" : ""
+      } text-nowrap font-inter text-md font-medium transition-opacity duration-200 focus:ring-4 text-lg ${className}`}
       onClick={onClick}
     >
       <span className="sr-only">{accessabilityLabel}</span>

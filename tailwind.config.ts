@@ -13,12 +13,32 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
         gulvGreen: "var(--gulvGreen)",
+        white: "var(--white)",
+        sand: "var(--sand)",
+        brown: "var(--brown)",
       },
       fontFamily: {
         inter: ["Inter", "sans-serif"],
       },
+
+      screens: {
+        xs: "430px",
+      },
     },
   },
   important: true,
-  plugins: [],
+  plugins: [
+    function ({ addUtilities }) {
+      addUtilities({
+        ".scrollbar-hide": {
+          /* Hide scrollbar for WebKit browsers */
+          "-ms-overflow-style": "none", // IE and Edge
+          "scrollbar-width": "none", // Firefox
+          "&::-webkit-scrollbar": {
+            display: "none", // Chrome, Safari, and Opera
+          },
+        },
+      });
+    },
+  ],
 } satisfies Config;

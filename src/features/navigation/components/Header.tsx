@@ -31,8 +31,19 @@ const Header: React.FC = () => {
               href="#"
               text="Call Us"
               icon={<PhoneIcon fill="#f8fafc" />}
-              className="text-base bg-gulvGreen hover:opacity-90 focus:ring-gray-300 text-slate-50 mr-2 md:mr-0"
+              className="text-base bg-gulvGreen hover:opacity-90 focus:ring-gray-300 text-slate-50 mr-2 md:mr-0 hidden xs:flex"
               accessabilityLabel="Call Us Button"
+            />
+            {/* <Button
+              href="#"
+              icon={<PhoneIcon fill="#f8fafc" />}
+              className="text-base bg-gulvGreen hover:opacity-90 focus:ring-gray-300 text-slate-50 mr-2 md:mr-0 xs:hidden py-2 px-2"
+              accessabilityLabel="Call Us Button"
+            /> */}
+            <IconButton
+              roundedClass="rounded-full"
+              extraClasses="bg-gulvGreen text-white hover:text-black rounded-full mr-1 xs:hidden"
+              icon={<PhoneIcon />}
             />
           </li>
 
@@ -58,7 +69,7 @@ const Header: React.FC = () => {
           className="items-center justify-center w-full hidden sm:flex"
           id="mobile-menu-2"
         >
-          <ul className="gap-6 hidden sm:flex flex-row">
+          <ul className="gap-8 hidden sm:flex flex-row">
             {navigationMenu.map((link, index) => (
               <li key={index}>
                 <NavLinkItem

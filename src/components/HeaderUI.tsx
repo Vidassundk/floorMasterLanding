@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 interface HeaderUIProps {
   logo: React.ReactNode;
@@ -11,9 +11,28 @@ const HeaderUI: React.FC<HeaderUIProps> = ({
   navigationElement,
   ctaElements,
 }) => {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Check if the page is scrolled more than 10px
+      setIsScrolled(window.scrollY > 10);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <header>
-      <nav className="px-6 py-8">
+    <header
+      className={`sticky top-0 right-0 left-0 z-50  transition-all duration-300 ${
+        isScrolled ? "bg-white/90 shadow-lg bg-background" : "bg-transparent"
+      }`}
+    >
+      <nav className="py-8 px-4 container mx-auto">
         <div className="flex justify-between items-center">
           <div>{logo}</div>
           {navigationElement && navigationElement}

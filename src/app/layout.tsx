@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { LanguageProvider } from "@/features/languages/context/LanguageContext";
 import Header from "@/features/navigation/components/Header";
+import Footer from "@/components/Blocks/Footer";
 
 export const metadata: Metadata = {
   title: "Golv Mestere",
@@ -19,6 +20,7 @@ export default function RootLayout({
         <LanguageProvider>
           <Header />
           {children}
+          <Footer />
         </LanguageProvider>
       </body>
     </html>

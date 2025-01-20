@@ -7,14 +7,24 @@ export interface MenuItem {
   href?: string;
   onClick?: () => void;
   subMenu?: MenuItem[];
+  underline?: boolean;
+  bold?: string;
 }
 
-const NavLinkItem: React.FC<MenuItem> = ({ href, label, onClick }) => {
+const NavLinkItem: React.FC<MenuItem> = ({
+  href,
+  label,
+  onClick,
+  underline,
+  bold = "font-semibold",
+}) => {
   return (
     <a
       href={href}
       onClick={onClick}
-      className="block text-base font-semibold font-inter cursor-pointer hover:opacity-80"
+      className={`block text-base ${bold} font-inter cursor-pointer hover:opacity-80 ${
+        underline ? "underline" : ""
+      }`}
     >
       {label}
     </a>

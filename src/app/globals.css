@@ -6,10 +6,18 @@
   --background: #e9e5d8;
   --foreground: #291d1d;
   --gulvGreen: #34a853;
+  --white: #f9f8f8;
+  --sand: #e3dac9;
+  --brown: #29241d;
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
   font-family: Helvetica, sans-serif;
+}
+
+.scrollable-container {
+  -webkit-overflow-scrolling: touch; /* Native iOS bounce */
+  overscroll-behavior: contain; /* Prevent scrolling from propagating to the body */
 }

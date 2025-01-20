@@ -1,15 +1,32 @@
 interface ChevronIconProps {
   fill?: string;
   size?: number;
+  direction?: "up" | "down" | "left" | "right"; // Add direction prop
 }
 
 const ChevronIcon: React.FC<ChevronIconProps> = ({
   fill = "currentColor",
   size,
+  direction = "down", // Default direction to 'down'
 }) => {
+  const getRotation = (direction: "up" | "down" | "left" | "right") => {
+    switch (direction) {
+      case "up":
+        return 180;
+      case "left":
+        return 90;
+      case "right":
+        return -90;
+      default:
+        return 0;
+    }
+  };
+
+  const rotation = getRotation(direction);
+
   return (
     <svg
-      style={{ marginBottom: 1 }}
+      style={{ marginBottom: 1, transform: `rotate(${rotation}deg)` }} // Apply rotation based on direction
       width={size}
       height={size && size / 1.4286}
       viewBox="0 0 10 7"
