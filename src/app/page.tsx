@@ -85,7 +85,7 @@ export default function Home() {
       <LandingBlock
         locationButton={{
           title: t("hero.companyName"), // "Rogalando"
-          starRating: 4.5,
+          starRating: 5,
           ratingText: t("hero.lovedBy"), // "Loved by 3 customers"
           ratingNumber: 3,
         }}

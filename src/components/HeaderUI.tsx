@@ -15,12 +15,17 @@ const HeaderUI: React.FC<HeaderUIProps> = ({
 
   useEffect(() => {
     const handleScroll = () => {
-      // Check if the page is scrolled more than 10px
+      // Update the state based on the current scroll position
       setIsScrolled(window.scrollY > 10);
     };
 
+    // Check scroll position on initial render
+    handleScroll();
+
+    // Add the event listener for scrolling
     window.addEventListener("scroll", handleScroll);
 
+    // Cleanup the event listener on unmount
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
@@ -28,7 +33,7 @@ const HeaderUI: React.FC<HeaderUIProps> = ({
 
   return (
     <header
-      className={`sticky top-0 right-0 left-0 z-50  transition-all duration-300 ${
+      className={`sticky top-0 right-0 left-0 z-50 transition-all duration-300 ${
         isScrolled ? "bg-white/90 shadow-md bg-background" : "bg-transparent"
       }`}
     >

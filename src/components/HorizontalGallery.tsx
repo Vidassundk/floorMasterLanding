@@ -94,7 +94,7 @@ const HorizontalGallery: React.FC<HorizontalGalleryProps> = ({
         {images.map((image, index) => (
           <div
             key={index}
-            className="shrink-0 w-[400px] h-[400px] sm:w-[600px] sm:h-[400px] lg:w-[800px] lg:h-[600px] xl:w-[900px] xl:h-[600px] relative overflow-hidden"
+            className="shrink-0 w-screen h-[320px] sm:w-[600px] sm:h-[400px] lg:w-[800px] lg:h-[600px] xl:w-[900px] xl:h-[600px] relative overflow-hidden"
           >
             <Image
               src={image.src}
@@ -107,7 +107,7 @@ const HorizontalGallery: React.FC<HorizontalGalleryProps> = ({
         ))}
       </div>
       {/* Scroll Buttons Underneath */}
-      <div className="container flex gap-4 mt-4 mx-auto justify-center lg:justify-start">
+      <div className="container flex gap-4 mt-4 mx-auto">
         <IconButton
           onClick={() => scroll("left")}
           disabled={!canScrollLeft}

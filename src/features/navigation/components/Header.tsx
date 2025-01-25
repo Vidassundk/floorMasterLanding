@@ -34,12 +34,13 @@ const Header: React.FC = () => {
               className="text-base bg-gulvGreen hover:opacity-90 focus:ring-gray-300 text-slate-50 mr-2 md:mr-0 hidden xs:flex"
               accessabilityLabel="Call Us Button"
             />
-
-            <IconButton
-              roundedClass="rounded-full"
-              extraClasses="bg-gulvGreen text-white hover:text-black rounded-full mr-1 xs:hidden"
-              icon={<PhoneIcon />}
-            />
+            <a className="xs:hidden" href="tel:+4531886266" target="_blank">
+              <IconButton
+                roundedClass="rounded-full"
+                extraClasses="bg-gulvGreen text-white hover:text-black rounded-full mr-1 "
+                icon={<PhoneIcon />}
+              />
+            </a>
           </li>
 
           <li className="md:hidden sm:-mr-4">
