@@ -1,7 +1,6 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
-import HoverGraphic from "react-hover-graphic";
 
 interface MouseOverImageProps {
   children: React.ReactNode;

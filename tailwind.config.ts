@@ -28,7 +28,11 @@ export default {
   },
   important: true,
   plugins: [
-    function ({ addUtilities }) {
+    function ({
+      addUtilities,
+    }: {
+      addUtilities: (utilities: Record<string, any>) => void;
+    }) {
       addUtilities({
         ".scrollbar-hide": {
           /* Hide scrollbar for WebKit browsers */

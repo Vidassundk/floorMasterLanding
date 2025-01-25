@@ -4,25 +4,26 @@ interface SectionTitleProps {
   title: string;
   rightSide?: React.ReactNode;
   subTitle?: string;
-  ref?: React.RefObject<HTMLDivElement>;
+
+  containerRef?: React.RefObject<HTMLDivElement | null>; // Accept null explicitly
+
   dark?: boolean;
 }
-
 const SectionTitle: React.FC<SectionTitleProps> = ({
   title,
   rightSide,
   subTitle,
-  ref,
+  containerRef,
   dark = false,
 }) => {
   return (
     <div
-      className={`container mx-auto flex-col lg:flex-row flex justify-between mt-4 gap-4 ${
+      className={`container px-4 lg:px-0 mx-auto flex-col lg:flex-row flex justify-between mt-4 gap-4 ${
         dark ? "text-background" : "text-foreground"
       }`}
     >
       <div
-        ref={ref}
+        ref={containerRef} // Use the renamed prop here
         className={`flex flex-col lg:flex-row items-start lg:items-center gap-4 `}
       >
         {/* Title and Subtitle with a Vertical Divider */}
@@ -37,7 +38,7 @@ const SectionTitle: React.FC<SectionTitleProps> = ({
         </p>
       </div>
       {/* Right Side Content */}
-      {rightSide}
+      <div className="flex">{rightSide}</div>
     </div>
   );
 };

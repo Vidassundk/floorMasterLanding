@@ -2,51 +2,55 @@ import React from "react";
 import SectionTitle from "../SectionTitle";
 import LocationButton from "../LocationButton";
 import ServiceCard from "../ServiceCard";
-import ParquetIcon from "../icons/ParquetIcon";
-import ParquetTwoIcon from "../icons/ParquetTwoIcon";
-import BrushIcon from "../icons/BrushIcon";
-import LightBulb from "../icons/LightBulb";
 
-const ServicesBlock = () => {
+export interface ServicesBlockProps {
+  sectionTitle: string;
+  sectionSubtitle: string;
+  locationButton: {
+    title: string;
+    ghost?: boolean;
+  };
+  services: {
+    title: string;
+    list: string[]; // Always an array of strings
+    icon: React.ReactNode;
+    mode: "dark" | "light";
+    hasFooter?: boolean;
+  }[];
+}
+
+const ServicesBlock: React.FC<ServicesBlockProps> = ({
+  sectionTitle,
+  sectionSubtitle,
+  locationButton,
+  services,
+}) => {
   return (
-    <div>
+    <section id="services-section" className="scroll-m-32">
       <SectionTitle
-        title="Professional Flooring Services"
-        subTitle="Fast, precise, and professional work execution ensuring top results"
-        rightSide={<LocationButton ghost title={"Rogalando"} />}
+        title={sectionTitle}
+        subTitle={sectionSubtitle}
+        rightSide={
+          <a href="https://maps.app.goo.gl/kQR9o2LPJEfDHDi56" target="_blank">
+            <LocationButton
+              ghost={locationButton.ghost}
+              title={locationButton.title}
+            />
+          </a>
+        }
       />
       <div className="container grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 mx-auto my-6">
-        <ServiceCard
-          title={"Floor Installation Services"}
-          list={["Laminate", "Parquet", "Vinyl", "Adhesive"]}
-          icon={<ParquetIcon />}
-          mode="dark"
-          hasFooter={false}
-        />
-        <ServiceCard
-          title={"Custom Flooring Solutions"}
-          list={["Herringbone Pattern", "French Herringbone Pattern"]}
-          icon={<ParquetTwoIcon />}
-          mode="light"
-        />
-        <ServiceCard
-          title={"Floor Renovation Services"}
-          list={[
-            "Sanding Old Floors",
-            "Varnishing Floors",
-            "Floor replacement ",
-          ]}
-          icon={<BrushIcon />}
-          mode="dark"
-        />
-        <ServiceCard
-          title={"Consultation Services"}
-          list={["Comprehensive advice on selecting materials and designs"]}
-          icon={<LightBulb />}
-          mode="light"
-        />
+        {services.map((service, index) => (
+          <ServiceCard
+            key={index}
+            title={service.title}
+            list={service.list}
+            icon={service.icon}
+            mode={service.mode}
+          />
+        ))}
       </div>
-    </div>
+    </section>
   );
 };
 

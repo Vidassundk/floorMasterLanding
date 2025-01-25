@@ -19,7 +19,9 @@ const SubMenuButton: React.FC<SubMenuButtonProps> = ({
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const handleToggle = () => {
+  const handleToggle = (e: React.MouseEvent) => {
+    e.preventDefault(); // Prevent default anchor behavior
+    e.stopPropagation(); // Prevent clicks from bubbling to the document
     setDropdownOpen((prev) => !prev);
   };
 
@@ -44,14 +46,8 @@ const SubMenuButton: React.FC<SubMenuButtonProps> = ({
 
   return (
     <div ref={containerRef} className={`relative ${extraStyles}`}>
-      {/* Prevent event bubbling */}
-      <div
-        onClick={(e) => {
-          e.stopPropagation(); // Prevent clicks from bubbling to the document
-          handleToggle();
-        }}
-        className="cursor-pointer"
-      >
+      {/* Prevent default anchor behavior */}
+      <div onClick={handleToggle} className="cursor-pointer">
         {children}
       </div>
       {subMenu && (

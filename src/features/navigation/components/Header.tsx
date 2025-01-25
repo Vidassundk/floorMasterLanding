@@ -14,8 +14,8 @@ import SubMenuButton from "@/components/SubMenuButton";
 import IconButton from "@/components/IconButton";
 
 const Header: React.FC = () => {
-  const navigationMenu = useMenuConfig();
-  const { language, setLanguage } = useLanguage();
+  const navigationMenu = useMenuConfig(); // Now uses translated labels
+  const { language, setLanguage, t } = useLanguage();
 
   const activeLanguage = languageOptions.find(
     (option) => option.value === language
@@ -28,18 +28,13 @@ const Header: React.FC = () => {
         <ul className="flex items-center flex-row">
           <li>
             <Button
-              href="#"
-              text="Call Us"
+              href="tel:+4531886266"
+              text={t("hero.cta2")}
               icon={<PhoneIcon fill="#f8fafc" />}
               className="text-base bg-gulvGreen hover:opacity-90 focus:ring-gray-300 text-slate-50 mr-2 md:mr-0 hidden xs:flex"
               accessabilityLabel="Call Us Button"
             />
-            {/* <Button
-              href="#"
-              icon={<PhoneIcon fill="#f8fafc" />}
-              className="text-base bg-gulvGreen hover:opacity-90 focus:ring-gray-300 text-slate-50 mr-2 md:mr-0 xs:hidden py-2 px-2"
-              accessabilityLabel="Call Us Button"
-            /> */}
+
             <IconButton
               roundedClass="rounded-full"
               extraClasses="bg-gulvGreen text-white hover:text-black rounded-full mr-1 xs:hidden"
@@ -90,15 +85,9 @@ const Header: React.FC = () => {
                 align="right"
               >
                 <div className="flex flex-row gap-2 items-center">
-                  <NavLinkItem
-                    label={activeLanguage?.label || "Select Language"}
-                    subMenu={languageOptions.map((option) => ({
-                      label: option.label,
-                      onClick: () =>
-                        setLanguage(option.value as typeof language),
-                      icon: option.flag,
-                    }))}
-                  />
+                  <p className="font-bold font-inter cursor-pointer hover:opacity-80">
+                    {activeLanguage?.label || "Select Language"}
+                  </p>
                   <div className="h-4 w-4 flex items-center pb-[2px]">
                     {activeLanguage?.flag}
                   </div>

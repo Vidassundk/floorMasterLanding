@@ -1,0 +1,97 @@
+{
+  "menu": {
+    "services": "Paslaugos",
+    "gallery": "Galerija",
+    "faq": "D.U.K.",
+    "languages": {
+      "english": "Anglų",
+      "norwegian": "Norvegų",
+      "lithuanian": "Lietuvių"
+    }
+  },
+  "hero": {
+    "lovedBy": "Mūsų paslaugomis pasitiki {{number}} klientai",
+    "companyName": "Rogalando",
+    "tagline": "Teikiame aukščiausios kokybės grindų sprendimus greitai ir tiksliai.",
+    "cta": "Pradėkite savo grindų projektą",
+    "cta2": "Susisiekite"
+  },
+  "faq": {
+    "title": "D.U.K.",
+    "description": "Atsakymai į dažniausiai užduodamus klausimus.",
+    "askQuestion": "Turite klausimų?",
+    "items": {
+      "1": {
+        "question": "Kokias grindų paslaugas teikiate?",
+        "answer": "Teikiame laminato, parketo, vinilo ir masyvo grindų klojimo paslaugas. Taip pat siūlome grindų šlifavimą, lakavimą ir alyvavimą, užtikrindami jų patvarumą ir estetiką. Pašaliname seną dangą, paruošiame pagrindą naujoms grindims ir užtikriname aukščiausią kokybę."
+      },
+      "2": {
+        "question": "Ar konsultuojate renkantis grindų dangą?",
+        "answer": "Taip, teikiame profesionalias konsultacijas, padėsiančias pasirinkti tinkamiausią grindų dangą pagal jūsų poreikius. Įvertiname patalpų paskirtį, intensyvumą, drėgmės lygį ir estetiką, kad sprendimas būtų ilgaamžis ir derėtų prie interjero."
+      },
+      "3": {
+        "question": "Kiek laiko trunka grindų klojimas?",
+        "answer": "Trukmė priklauso nuo grindų tipo, ploto ir pagrindo paruošimo sudėtingumo. Laminato ar vinilo klojimas užtrunka 1-3 dienas, o parketo su šlifavimu ir lakavimu – iki savaitės. Po apžiūros sudarysime tikslų darbų planą."
+      },
+      "4": {
+        "question": "Ar atnaujinate grindis?",
+        "answer": "Taip, teikiame grindų šlifavimo, lakavimo, alyvavimo ir pažeistų lentų keitimo paslaugas. Tai padeda atkurti grindų išvaizdą ir prailginti jų tarnavimo laiką. Sugrąžinsime jūsų grindims pradinį grožį ir funkcionalumą."
+      },
+      "5": {
+        "question": "Ar dirbate su komerciniais objektais?",
+        "answer": "Taip, dirbame tiek su gyvenamosiomis, tiek su komercinėmis patalpomis, įskaitant biurus, restoranus, parduotuves ir kitus objektus. Turime patirties įvairaus dydžio projektuose ir pasiūlysime sprendimus, atitinkančius jūsų poreikius."
+      },
+      "6": {
+        "question": "Kaip užsisakyti jūsų paslaugas?",
+        "answer": "Susisiekite telefonu arba el. paštu, nurodytu mūsų kontaktuose. Sutarsime dėl objekto apžiūros, įvertinsime darbų apimtį ir parengsime individualų pasiūlymą."
+      },
+      "7": {
+        "question": "Ar suteikiate garantiją?",
+        "answer": "Taip, suteikiame garantiją savo darbams. Garantijos trukmė priklauso nuo projekto sudėtingumo ir apimties, tačiau visuomet užtikriname aukščiausią kokybę."
+      },
+      "8": {
+        "question": "Kokias medžiagas naudojate?",
+        "answer": "Naudojame tik aukštos kokybės medžiagas, atitinkančias saugumo ir patvarumo reikalavimus. Parenkame jas pagal kliento poreikius ir patalpos specifiką, kad rezultatas būtų ir gražus, ir patvarus."
+      },
+      "9": {
+        "question": "Ar pašalinate senas grindų dangas?",
+        "answer": "Taip, pašaliname seną grindų dangą – laminatą, parketą ar vinilą. Taip pat paruošiame pagrindą naujoms grindims, kad rezultatas būtų nepriekaištingas."
+      },
+      "10": {
+        "question": "Ar galima pamatyti jūsų darbų pavyzdžius?",
+        "answer": "Taip, mūsų darbų pavyzdžius rasite interneto svetainėje ar socialiniuose tinkluose. Prireikus galime pateikti nuotraukų ar vaizdo įrašų iš atliktų projektų."
+      }
+    }
+  },
+  "services": {
+    "title": "Profesionalios grindų paslaugos",
+    "description": "Greitas, tikslus ir profesionalus darbų atlikimas užtikrinant aukščiausią rezultatą",
+    "categories": {
+      "installation": {
+        "title": "Grindų klojimo paslaugos",
+        "items": ["Laminatas", "Parketas", "Vinilas", "Klijai"]
+      },
+      "customSolutions": {
+        "title": "Individualūs grindų sprendimai",
+        "items": ["Eglutės raštas", "Prancūziškas eglutės raštas"]
+      },
+      "renovation": {
+        "title": "Grindų atnaujinimo paslaugos",
+        "items": ["Senų grindų šlifavimas", "Lakavimas", "Grindų keitimas"]
+      },
+      "consultation": {
+        "title": "Konsultavimo paslaugos",
+        "description": "Išsamios konsultacijos medžiagų ir dizaino pasirinkimui"
+      }
+    }
+  },
+  "gallery": {
+    "title": "Galerija",
+    "description": "Mūsų darbų nuotraukos",
+    "seeMore": "Žiūrėti daugiau",
+    "social": "mūsų {{logo}} Facebook puslapyje"
+  },
+  "footer": {
+    "copyright": "Visos teisės saugomos."
+  }
+}

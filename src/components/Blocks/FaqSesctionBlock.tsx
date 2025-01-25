@@ -3,10 +3,8 @@
 import React from "react";
 import SectionTitle from "../SectionTitle";
 import QuestionMarkIcon from "../icons/QuestionMarkIcon";
-import CheckcircleIcon from "../icons/CheckCircleIcon";
 import PersonIcon from "../icons/PersonIcon";
 import Button from "../Button";
-import MailIcon from "../icons/MailIcon";
 
 export interface FAQItem {
   id: number;
@@ -16,27 +14,39 @@ export interface FAQItem {
 
 interface FAQSectionBlockProps {
   faqData: FAQItem[];
+  sectionTitle: string; // Title of the FAQ section
+  sectionSubtitle: string; // Subtitle of the FAQ section
+  buttonText: string; // Text for the button
+  buttonHref: string; // URL for the button link
+  questionIconLabel?: string; // Accessibility label for the question icon
+  answerIconLabel?: string; // Accessibility label for the answer icon
 }
 
-const FAQSectionBlock: React.FC<FAQSectionBlockProps> = ({ faqData }) => {
+const FAQSectionBlock: React.FC<FAQSectionBlockProps> = ({
+  faqData,
+  sectionTitle,
+  sectionSubtitle,
+  buttonText,
+  buttonHref,
+  questionIconLabel = "Question Icon",
+  answerIconLabel = "Answer Icon",
+}) => {
   return (
-    <div className="py-4 bg-brown">
-      <SectionTitle
-        title="F.A.Q."
-        subTitle="Answers to common questions by out customers."
-        dark
-      />
+    <section id="faq-section" className="pb-10 bg-foreground scroll-m-32">
+      <SectionTitle title={sectionTitle} subTitle={sectionSubtitle} dark />
       <div className="max-w-screen-md mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-between">
-        {/* Title */}
         {/* FAQ List */}
-        <div className="mt-20">
+        <div className="mt-6 lg:mt-20">
           <ul>
             {faqData.map((item) => (
               <li key={item.id} className="text-left mb-10">
                 {/* Question Row */}
                 <div className="flex flex-row items-start mb-5">
                   {/* Left Icon (hidden on small screens) */}
-                  <div className="hidden sm:flex items-center justify-center p-3 mr-3 rounded-full bg-background text-foreground text-xl font-semibold">
+                  <div
+                    className="hidden sm:flex items-center justify-center p-3 mr-3 rounded-full bg-background text-foreground text-xl font-semibold"
+                    aria-label={questionIconLabel}
+                  >
                     <QuestionMarkIcon />
                   </div>
 
@@ -55,7 +65,10 @@ const FAQSectionBlock: React.FC<FAQSectionBlockProps> = ({ faqData }) => {
                   </div>
 
                   {/* Right Icon (hidden on small screens) */}
-                  <div className="hidden sm:flex items-center justify-center p-3 ml-3 rounded-full bg-gulvGreen text-white text-xl font-semibold">
+                  <div
+                    className="hidden sm:flex items-center justify-center p-3 ml-3 rounded-full bg-gulvGreen text-white text-xl font-semibold"
+                    aria-label={answerIconLabel}
+                  >
                     <PersonIcon />
                   </div>
                 </div>
@@ -66,14 +79,13 @@ const FAQSectionBlock: React.FC<FAQSectionBlockProps> = ({ faqData }) => {
       </div>
       <div className="flex items-center justify-center">
         <Button
-          href="#"
-          text="Ask Us Anything"
-          icon={<MailIcon size={28} />}
-          className="text-base bg-white"
+          href={buttonHref}
+          text={buttonText}
+          className="text-base bg-background hover:bg-white"
           accessabilityLabel="Ask Us Anything Button"
         />
       </div>
-    </div>
+    </section>
   );
 };
 

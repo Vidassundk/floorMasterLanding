@@ -1,0 +1,97 @@
+{
+  "menu": {
+    "services": "Tjenester",
+    "gallery": "Galleri",
+    "faq": "OSS",
+    "languages": {
+      "english": "Engelsk",
+      "norwegian": "Norsk",
+      "lithuanian": "Litauisk"
+    }
+  },
+  "hero": {
+    "lovedBy": "Elsket av {{number}} kunder",
+    "companyName": "Rogalando",
+    "tagline": "Vi leverer gulvløsninger av høy kvalitet raskt og presist.",
+    "cta": "Start ditt gulvprosjekt",
+    "cta2": "Ring oss"
+  },
+  "faq": {
+    "title": "OSS",
+    "description": "Svar på vanlige spørsmål fra våre kunder.",
+    "askQuestion": "Har du et spørsmål?",
+    "items": {
+      "1": {
+        "question": "Hvilke gulvtjenester tilbyr dere?",
+        "answer": "Vi tilbyr installasjon av laminat, parkett, vinyl og heltre. Vi utfører også sliping, lakkering og oljing for å sikre holdbarhet og estetikk. I tillegg fjerner vi gamle dekker, klargjør underlaget og sørger for høyeste kvalitet."
+      },
+      "2": {
+        "question": "Tilbyr dere rådgivning for valg av gulv?",
+        "answer": "Ja, vi gir profesjonell rådgivning for å hjelpe deg med å velge det mest passende gulvet. Vi vurderer rommets formål, intensitet, fuktighet og estetikk for å sikre et varig og estetisk resultat."
+      },
+      "3": {
+        "question": "Hvor lang tid tar det å legge gulv?",
+        "answer": "Varigheten avhenger av gulvtype, areal og kompleksitet i underlaget. Laminat og vinyl tar vanligvis 1–3 dager, mens parkettlegging med sliping og lakkering kan ta opptil en uke. Vi lager en nøyaktig plan etter inspeksjon."
+      },
+      "4": {
+        "question": "Tilbyr dere gulvrenovering?",
+        "answer": "Ja, vi tilbyr sliping, lakkering, oljing og utskifting av skadede bord. Disse tjenestene gjenoppretter gulvets skjønnhet og forlenger dets levetid."
+      },
+      "5": {
+        "question": "Jobber dere med kommersielle eiendommer?",
+        "answer": "Ja, vi jobber med både private og kommersielle eiendommer, inkludert kontorer, restauranter og butikker. Vi har erfaring med prosjekter av alle størrelser og kan tilpasse løsninger til dine behov."
+      },
+      "6": {
+        "question": "Hvordan bestiller jeg deres tjenester?",
+        "answer": "Kontakt oss via telefon eller e-post oppgitt i våre kontakter. Vi avtaler en inspeksjon, vurderer arbeidet og gir et individuelt tilbud."
+      },
+      "7": {
+        "question": "Tilbyr dere garanti for arbeidet?",
+        "answer": "Ja, vi gir garanti for vårt arbeid. Garantiperioden avhenger av prosjektets kompleksitet og omfang, men vi sikrer alltid høyeste kvalitet."
+      },
+      "8": {
+        "question": "Hvilke materialer bruker dere?",
+        "answer": "Vi bruker kun materialer av høy kvalitet fra pålitelige leverandører. Materialene velges etter kundens behov og rommets spesifikasjoner for å sikre et vakkert og holdbart resultat."
+      },
+      "9": {
+        "question": "Fjerner dere gamle gulvdekker?",
+        "answer": "Ja, vi kan fjerne gamle gulvdekker som laminat, parkett eller vinyl. Vi klargjør også underlaget for å sikre et perfekt resultat."
+      },
+      "10": {
+        "question": "Kan jeg se eksempler på deres arbeid?",
+        "answer": "Ja, du kan finne eksempler på vårt arbeid på vår nettside eller sosiale medier. Ved behov kan vi også tilby bilder eller videoer fra tidligere prosjekter."
+      }
+    }
+  },
+  "services": {
+    "title": "Profesjonelle gulvtjenester",
+    "description": "Rask, presis og profesjonell utførelse som sikrer toppresultater",
+    "categories": {
+      "installation": {
+        "title": "Gulvinstallasjon",
+        "items": ["Laminat", "Parkett", "Vinyl", "Lim"]
+      },
+      "customSolutions": {
+        "title": "Tilpassede gulvløsninger",
+        "items": ["Fiskebensmønster", "Fransk fiskebensmønster"]
+      },
+      "renovation": {
+        "title": "Gulvrenovering",
+        "items": ["Sliping av gamle gulv", "Lakkering", "Utskifting av gulv"]
+      },
+      "consultation": {
+        "title": "Rådgivning",
+        "description": "Omfattende råd for valg av materialer og design"
+      }
+    }
+  },
+  "gallery": {
+    "title": "Galleri",
+    "description": "Bilder av vårt arbeid",
+    "seeMore": "Se mer",
+    "social": "på vår {{logo}} Facebook-side"
+  },
+  "footer": {
+    "copyright": "Alle rettigheter reservert."
+  }
+}

@@ -9,7 +9,7 @@ const Background = ({ withBgTop = true, withBgBottom = false }) => {
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(to bottom, var(--background), transparent 30%)",
+              "linear-gradient(to bottom, var(--background), transparent 10%)",
           }}
         ></div>
       )}

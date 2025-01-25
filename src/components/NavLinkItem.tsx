@@ -1,14 +1,15 @@
 "use client";
 
+import Link from "next/link";
 import React from "react";
 
 export interface MenuItem {
   label: string | React.ReactNode;
   href?: string;
   onClick?: () => void;
-  subMenu?: MenuItem[];
   underline?: boolean;
   bold?: string;
+  target?: string;
 }
 
 const NavLinkItem: React.FC<MenuItem> = ({
@@ -17,17 +18,19 @@ const NavLinkItem: React.FC<MenuItem> = ({
   onClick,
   underline,
   bold = "font-semibold",
+  target,
 }) => {
   return (
-    <a
-      href={href}
+    <Link
+      target={target}
+      href={href || ""}
       onClick={onClick}
-      className={`block text-base ${bold} font-inter cursor-pointer hover:opacity-80 ${
+      className={`block ${bold} font-inter cursor-pointer hover:opacity-80 ${
         underline ? "underline" : ""
       }`}
     >
       {label}
-    </a>
+    </Link>
   );
 };
 

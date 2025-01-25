@@ -39,7 +39,11 @@ const HamburgerMenu: React.FC<HamburgerMenuProps> = ({ navigationItems }) => {
         <ul className="mt-4  p-4 divide-y">
           {navigationItems.map((item, index) => (
             <li className="px-2 py-3" key={index}>
-              <NavLinkItem href={item.href} label={item.label} />
+              <NavLinkItem
+                onClick={() => setMenuOpen(false)}
+                href={item.href}
+                label={item.label}
+              />
             </li>
           ))}
         </ul>

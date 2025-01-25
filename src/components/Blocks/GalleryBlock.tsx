@@ -2,18 +2,25 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import SectionTitle from "../SectionTitle";
-
 import NavLinkItem from "../NavLinkItem";
 import FacebookIcon from "../icons/FacebookIcon";
 import HorizontalGallery from "../HorizontalGallery";
-const images = [
-  { src: "/photos/1.jpg", alt: "Parquet 1" },
-  { src: "/photos/2.jpg", alt: "Parquet 2" },
-  { src: "/photos/3.jpg", alt: "Parquet 3" },
-  { src: "/photos/4.jpg", alt: "Parquet 4" },
-  { src: "/photos/5.jpg", alt: "Parquet 5" },
-];
-const GalleryBlock = () => {
+
+interface GalleryBlockProps {
+  sectionTitle: string;
+  sectionSubtitle: string;
+  navLinkLabel: string;
+  socialPlatform: string; // Expecting a string like "on our {{logo}} Facebook"
+  images: { src: string; alt: string }[];
+}
+
+const GalleryBlock: React.FC<GalleryBlockProps> = ({
+  sectionTitle,
+  sectionSubtitle,
+  navLinkLabel,
+  socialPlatform,
+  images,
+}) => {
   const sectionTitleRef = useRef<HTMLDivElement>(null);
   const [titleLeftOffset, setTitleLeftOffset] = useState<number | null>(null);
 
@@ -30,18 +37,38 @@ const GalleryBlock = () => {
     return () => window.removeEventListener("resize", updatePosition);
   }, []);
 
+  // Replace {{logo}} with a ReactNode containing the FacebookIcon
+  const renderSocialPlatform = () => {
+    const parts = socialPlatform.split("{{logo}}");
+    return parts.map((part, index) => (
+      <React.Fragment key={index}>
+        {part}
+        {index < parts.length - 1 && (
+          <span className="inline-flex items-center">
+            <FacebookIcon />
+          </span>
+        )}
+      </React.Fragment>
+    ));
+  };
+
   return (
-    <div>
+    <section id="gallery-section" className="scroll-m-32">
       {/* Trackable Section Title */}
       <div>
         <SectionTitle
-          ref={sectionTitleRef}
-          title="Gallery"
-          subTitle="Photos of our work"
+          containerRef={sectionTitleRef} // Pass the ref as required
+          title={sectionTitle}
+          subTitle={sectionSubtitle}
           rightSide={
             <div className="flex flex-row items-center justify-center">
-              <NavLinkItem underline label="See More" /> &nbsp;on our{" "}
-              <FacebookIcon /> Facebook
+              <NavLinkItem
+                underline
+                href="https://www.facebook.com/profile.php?id=61565412763854"
+                target="_blank"
+                label={navLinkLabel}
+              />
+              &nbsp;{renderSocialPlatform()}
             </div>
           }
         />
@@ -54,7 +81,7 @@ const GalleryBlock = () => {
           images={images}
         />
       </div>
-    </div>
+    </section>
   );
 };
 

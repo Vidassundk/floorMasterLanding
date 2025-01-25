@@ -3,7 +3,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import IconButton from "./IconButton";
-import PhoneIcon from "./icons/PhoneIcon";
 import ChevronIcon from "./icons/ChevronIcon";
 
 interface HorizontalGalleryProps {
@@ -42,7 +41,7 @@ const HorizontalGallery: React.FC<HorizontalGalleryProps> = ({
   };
 
   const scroll = (direction: "left" | "right") => {
-    const scrollAmount = 300; // Amount to scroll per click
+    const scrollAmount = 400; // Amount to scroll per click
     if (containerRef.current) {
       containerRef.current.scrollBy({
         left: direction === "left" ? -scrollAmount : scrollAmount,
@@ -95,20 +94,20 @@ const HorizontalGallery: React.FC<HorizontalGalleryProps> = ({
         {images.map((image, index) => (
           <div
             key={index}
-            className="shrink-0 w-[400px] h-[400px] sm:w-[600px] sm:h-[400px] relative rounded-lg overflow-hidden"
+            className="shrink-0 w-[400px] h-[400px] sm:w-[600px] sm:h-[400px] lg:w-[800px] lg:h-[600px] xl:w-[900px] xl:h-[600px] relative overflow-hidden"
           >
             <Image
               src={image.src}
               alt={image.alt}
               fill={true}
-              className="absolute inset-0  object-cover transition-transform duration-300 hover:scale-105 hover:translate-x-1"
+              className="absolute inset-0 object-cover transition-transform duration-300 hover:scale-105 hover:translate-x-1"
               draggable={false} // Prevent default image dragging
             />
           </div>
         ))}
       </div>
       {/* Scroll Buttons Underneath */}
-      <div className="container flex gap-4 mt-4 mx-auto">
+      <div className="container flex gap-4 mt-4 mx-auto justify-center lg:justify-start">
         <IconButton
           onClick={() => scroll("left")}
           disabled={!canScrollLeft}
