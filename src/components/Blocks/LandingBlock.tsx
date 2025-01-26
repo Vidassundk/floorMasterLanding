@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import LocationButton from "../LocationButton";
 import Button from "../Button";
 import Image from "next/image";
@@ -36,6 +38,20 @@ const LandingBlock: React.FC<LandingBlockProps> = ({
   secondaryButton,
   images,
 }) => {
+  // 1) Track loading state for each image
+  const [loadingStates, setLoadingStates] = useState<boolean[]>(
+    () => images.map(() => true) // all true (loading) initially
+  );
+
+  // Handler to mark an image as loaded
+  const handleImageLoad = (index: number) => {
+    setLoadingStates((prev) => {
+      const updated = [...prev];
+      updated[index] = false;
+      return updated;
+    });
+  };
+
   return (
     <section
       className="relative"
@@ -80,6 +96,7 @@ const LandingBlock: React.FC<LandingBlockProps> = ({
             />
           </div>
         </div>
+
         {/* Images Section */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 container xl:container-none w-full mx-auto">
           {images.map((image, index) => (
@@ -90,12 +107,26 @@ const LandingBlock: React.FC<LandingBlockProps> = ({
               }`}
               style={{ paddingBottom: "65%" }}
             >
+              {/* 2) Skeleton overlay */}
+              <div
+                className={`
+                  absolute inset-0 
+                  bg-gray-200 
+                  animate-pulse 
+                  transition-opacity 
+                  duration-500 
+                  ${loadingStates[index] ? "opacity-100" : "opacity-0"}
+                `}
+              />
+
+              {/* 3) Next Image */}
               <Image
                 src={image.src}
                 alt={image.alt}
-                fill={true}
+                fill
                 className="absolute inset-0 object-cover transition-transform duration-1000 group-hover:scale-150"
-                style={{ transformOrigin: "center bottom" }} // Focus zoom on the bottom
+                style={{ transformOrigin: "center bottom" }}
+                onLoadingComplete={() => handleImageLoad(index)}
               />
             </div>
           ))}
