@@ -2,6 +2,7 @@
 
 import { MenuItem } from "@/components/NavLinkItem";
 import { useMenuConfig } from "@/features/navigation/menuConfig";
+import { useLanguage } from "../languages/context/LanguageContext";
 
 export interface LinkGroup {
   title: string;
@@ -14,6 +15,7 @@ export interface LinkGroup {
 
 export const useLinkGroups = (): LinkGroup[] => {
   const navigationMenu: MenuItem[] = useMenuConfig();
+  const { t } = useLanguage();
 
   // Convert them to the shape required by FooterLinkGroup, filtering out undefined href
   const navigationLinks = navigationMenu
@@ -32,8 +34,8 @@ export const useLinkGroups = (): LinkGroup[] => {
     {
       title: "Contact",
       links: [
-        { href: "tel:+4531886266", text: "Call Us" },
-        { href: "mailto:info@gulvmestere.no", text: "Mail Us" },
+        { href: "tel:+4531886266", text: t("hero.cta2") },
+        { href: "mailto:info@gulvmestere.no", text: t("hero.cta3") },
       ],
     },
     {

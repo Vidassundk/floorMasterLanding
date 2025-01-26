@@ -1,10 +1,11 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef } from "react";
 import SectionTitle from "../SectionTitle";
 import NavLinkItem from "../NavLinkItem";
 import FacebookIcon from "../icons/FacebookIcon";
-import HorizontalGallery from "../HorizontalGallery";
+
+import GridGallery from "../GridGallery";
 
 interface GalleryBlockProps {
   sectionTitle: string;
@@ -22,20 +23,6 @@ const GalleryBlock: React.FC<GalleryBlockProps> = ({
   images,
 }) => {
   const sectionTitleRef = useRef<HTMLDivElement>(null);
-  const [titleLeftOffset, setTitleLeftOffset] = useState<number | null>(null);
-
-  useEffect(() => {
-    const updatePosition = () => {
-      if (sectionTitleRef.current) {
-        const rect = sectionTitleRef.current.getBoundingClientRect();
-        setTitleLeftOffset(rect.left); // Update the left position
-      }
-    };
-
-    updatePosition(); // Initial position update
-    window.addEventListener("resize", updatePosition); // Update on window resize
-    return () => window.removeEventListener("resize", updatePosition);
-  }, []);
 
   // Replace {{logo}} with a ReactNode containing the FacebookIcon
   const renderSocialPlatform = () => {
@@ -76,10 +63,7 @@ const GalleryBlock: React.FC<GalleryBlockProps> = ({
 
       {/* Gallery */}
       <div className="mt-6">
-        <HorizontalGallery
-          paddingLeft={titleLeftOffset || undefined}
-          images={images}
-        />
+        <GridGallery images={images} />
       </div>
     </section>
   );
