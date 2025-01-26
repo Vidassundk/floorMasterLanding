@@ -6,7 +6,7 @@ interface ChevronIconProps {
 
 const ChevronIcon: React.FC<ChevronIconProps> = ({
   fill = "currentColor",
-  size,
+  size = 10,
   direction = "down", // Default direction to 'down'
 }) => {
   const getRotation = (direction: "up" | "down" | "left" | "right") => {

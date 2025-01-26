@@ -15,6 +15,7 @@ import IconButton from "@/components/IconButton";
 
 const Header: React.FC = () => {
   const navigationMenu = useMenuConfig(); // Now uses translated labels
+
   const { language, setLanguage, t } = useLanguage();
 
   const activeLanguage = languageOptions.find(
@@ -56,7 +57,7 @@ const Header: React.FC = () => {
             </SubMenuButton>
           </li>
           <li className="sm:hidden -mr-2">
-            <HamburgerMenu navigationItems={navigationMenu} />
+            <HamburgerMenu />
           </li>
         </ul>
       }

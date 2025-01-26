@@ -2,51 +2,13 @@
 
 import React from "react";
 import Logo from "@/features/navigation/components/Logo";
-import { useMenuConfig } from "@/features/navigation/menuConfig";
 import FooterLinkGroup from "../LinkFooterGroup";
 import { useLanguage } from "@/features/languages/context/LanguageContext";
+import { useLinkGroups } from "@/features/navigation/useLinkGroups";
 
 const Footer = () => {
-  // Grab the array of MenuItems from useMenuConfig
-  const navigationMenu = useMenuConfig();
-  const { t } = useLanguage();
-
-  // Convert them to the shape required by FooterLinkGroup, filtering out undefined href
-  const navigationLinks = navigationMenu
-    .filter((menuItem) => menuItem.href)
-    .map((menuItem) => ({
-      href: menuItem.href as string,
-      text: menuItem.label as string,
-    }));
-
-  const linkGroups = [
-    {
-      title: "Navigation",
-      links: navigationLinks,
-    },
-    {
-      title: "Contact",
-      links: [
-        { href: "tel:+4531886266", text: "Call Us" },
-        { href: "mailto:info@gulvmestere.no", text: "Mail Us" },
-      ],
-    },
-    {
-      title: "Follow us",
-      links: [
-        {
-          href: "https://www.facebook.com/profile.php?id=61565412763854",
-          text: "Facebook",
-          target: "_blank",
-        },
-        {
-          href: "https://www.instagram.com/gulv_mestere_as",
-          text: "Instagram",
-          target: "_blank",
-        },
-      ],
-    },
-  ];
+  const linkGroups = useLinkGroups(); // get all footer link groups
+  const { t } = useLanguage(); // for that final "© 2025" part
 
   return (
     <footer className="bg-foreground">

@@ -42,11 +42,15 @@ const SubMenu: React.FC<SubMenuProps> = ({
               item.onClick?.();
               onClose();
             }}
-            className="flex text-base items-center gap-2 px-6 py-2 text-gray-700
+            className="flex text-base items-center gap-3 px-6 py-2 text-foreground
                        font-semibold font-inter hover:bg-gray-100 w-full text-left"
           >
+            {item.icon && (
+              <span className="h-5 min-h-5 w-5 min-w-5 flex items-center ">
+                {item.icon}
+              </span>
+            )}
             {item.label}
-            {item.icon && <span className="w-4">{item.icon}</span>}
           </button>
         </li>
       ))}

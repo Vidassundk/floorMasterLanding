@@ -1,14 +1,18 @@
 interface CloseIconProps {
   fill?: string;
+  size?: number;
 }
 
-const CloseIcon: React.FC<CloseIconProps> = ({ fill = "currentColor" }) => {
+const CloseIcon: React.FC<CloseIconProps> = ({
+  size = 20,
+  fill = "currentColor",
+}) => {
   return (
     <svg
       fill={fill}
-      className="w-6 h-6"
       version="1.1"
-      id="Layer_1"
+      width={size}
+      height={size}
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
       viewBox="0 0 512 512"

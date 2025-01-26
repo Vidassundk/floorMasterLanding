@@ -18,16 +18,18 @@ const SectionTitle: React.FC<SectionTitleProps> = ({
 }) => {
   return (
     <div
-      className={`container px-4 lg:px-0 mx-auto flex-col lg:flex-row flex justify-between mt-4 gap-4 ${
+      className={`container lg:px-0 mx-auto flex-col lg:flex-row flex justify-between mt-4 gap-4 ${
         dark ? "text-background" : "text-foreground"
       }`}
     >
       <div
         ref={containerRef} // Use the renamed prop here
-        className={`flex flex-col lg:flex-row items-start lg:items-center gap-4 `}
+        className={`flex flex-col lg:flex-row items-start lg:items-center gap-4`}
       >
         {/* Title and Subtitle with a Vertical Divider */}
-        <h2 className="text-3xl font-bold text-wrap lg:text-nowrap">{title}</h2>
+        <h2 className="text-3xl font-bold text-wrap lg:text-nowrap -ml-1 sm:ml-0">
+          {title}
+        </h2>
         <div
           className={`w-[2px] rounded-full hidden lg:block ${
             dark ? "bg-background" : "bg-foreground"

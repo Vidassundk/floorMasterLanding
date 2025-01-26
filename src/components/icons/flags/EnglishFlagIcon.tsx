@@ -1,6 +1,8 @@
 const EnglishFlagIcon: React.FC = () => {
   return (
     <svg
+      width={640}
+      height={480}
       xmlns="http://www.w3.org/2000/svg"
       id="flag-icons-gb"
       viewBox="0 0 640 480"

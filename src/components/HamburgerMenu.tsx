@@ -2,51 +2,86 @@
 
 import React, { useState } from "react";
 import HamburgerIcon from "./icons/HamburgerIcon";
-import CloseIcon from "./icons/CloseIcon"; // Optional close icon
+import CloseIcon from "./icons/CloseIcon";
 import IconButton from "./IconButton";
-import NavLinkItem, { MenuItem } from "./NavLinkItem";
 
-interface HamburgerMenuProps {
-  navigationItems: MenuItem[];
-}
+// 1) Import your linkGroups hook and FooterLinkGroup
+import { useLinkGroups } from "@/features/navigation/useLinkGroups";
+import FooterLinkGroup from "./LinkFooterGroup";
+import Logo from "@/features/navigation/components/Logo";
 
-const HamburgerMenu: React.FC<HamburgerMenuProps> = ({ navigationItems }) => {
+const HamburgerMenu: React.FC = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
 
-  const toggleMenu = () => setMenuOpen((prev) => !prev);
+  // 2) Reuse the same groups from the footer
+  const linkGroups = useLinkGroups();
+
+  const openMenu = () => setMenuOpen(true);
+  const closeMenu = () => setMenuOpen(false);
+
   return (
     <div>
+      {/* The icon button that opens/closes the menu */}
       <IconButton
-        onClick={toggleMenu}
+        onClick={isMenuOpen ? closeMenu : openMenu}
         icon={isMenuOpen ? <CloseIcon /> : <HamburgerIcon />}
       />
 
-      {/* Sliding Menu */}
+      {/*
+        BACKDROP:
+        A full-screen overlay behind the menu that blurs and dims the background.
+        - If the menu is open, we show it with "opacity-100 pointer-events-auto".
+        - If the menu is closed, "opacity-0 pointer-events-none" effectively hides it and prevents clicks.
+      */}
       <div
-        className={`fixed top-0 right-0 w-64 h-full bg-white shadow-lg transform transition-transform duration-300 ease-in-out ${
-          isMenuOpen ? "translate-x-0" : "translate-x-full"
-        }`}
+        className={`fixed inset-0 z-40 bg-black/30 backdrop-blur-sm transition-opacity duration-300 ease-in-out
+          ${
+            isMenuOpen
+              ? "opacity-100 pointer-events-auto"
+              : "opacity-0 pointer-events-none"
+          }
+        `}
+        onClick={closeMenu}
+      />
+
+      {/* SLIDING MENU: 
+          We use a higher z-index (z-50) so it's above the backdrop (z-40).
+      */}
+      <div
+        className={`
+          fixed top-0 right-0 w-64 h-full bg-white shadow-lg z-50
+          transform transition-transform duration-300 ease-in-out
+          ${isMenuOpen ? "translate-x-0" : "translate-x-full"}
+        `}
       >
+        {/* Close button */}
         <div className="p-4">
-          <button
-            onClick={toggleMenu}
-            className="text-foreground focus:outline-none"
-          >
-            <span className="sr-only">Close menu</span>
-            <CloseIcon />
-          </button>
+          <IconButton icon={<CloseIcon />} onClick={closeMenu} />
         </div>
-        <ul className="mt-4  p-4 divide-y">
-          {navigationItems.map((item, index) => (
-            <li className="px-2 py-3" key={index}>
-              <NavLinkItem
-                onClick={() => setMenuOpen(false)}
-                href={item.href}
-                label={item.label}
+
+        {/* 
+          Map over the same link groups that the footer uses
+          Use a <div> or <button> instead of <a> to wrap the group, 
+          so clicking any part of the group triggers closeMenu if desired.
+        */}
+        <div className="p-4 flex flex-col gap-6 text-foreground">
+          <div className="pb-4">
+            <Logo />
+          </div>
+          {linkGroups.map((group) => (
+            <div
+              key={group.title}
+              onClick={closeMenu}
+              className="cursor-pointer"
+            >
+              <FooterLinkGroup
+                title={group.title}
+                links={group.links}
+                textColor="text-foreground"
               />
-            </li>
+            </div>
           ))}
-        </ul>
+        </div>
       </div>
     </div>
   );

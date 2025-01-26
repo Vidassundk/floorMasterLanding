@@ -94,7 +94,7 @@ const LandingBlock: React.FC<LandingBlockProps> = ({
                 src={image.src}
                 alt={image.alt}
                 fill={true}
-                className="absolute inset-0 object-cover transition-transform duration-1000 group-hover:scale-150 group-hover:translate-y-1"
+                className="absolute inset-0 object-cover transition-transform duration-1000 group-hover:scale-150"
                 style={{ transformOrigin: "center bottom" }} // Focus zoom on the bottom
               />
             </div>
