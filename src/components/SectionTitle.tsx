@@ -18,7 +18,7 @@ const SectionTitle: React.FC<SectionTitleProps> = ({
 }) => {
   return (
     <div
-      className={`container lg:px-0 mx-auto flex-col lg:flex-row flex justify-between mt-4 gap-4 ${
+      className={`container pl-6 lg:pl-0 mx-auto flex-col lg:flex-row flex justify-between mt-4 gap-4 ${
         dark ? "text-background" : "text-foreground"
       }`}
     >

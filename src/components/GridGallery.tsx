@@ -27,7 +27,7 @@ const GridGallery: React.FC<GridGalleryProps> = ({ images }) => {
 
   return (
     <>
-      {/* Responsive grid: 2 cols on small, 3 on md+ */}
+      {/* Responsive grid: 1 col on xs, 2 cols on sm, 3 on md+ */}
       <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
         {images.map((image, index) => (
           <div
@@ -52,16 +52,16 @@ const GridGallery: React.FC<GridGalleryProps> = ({ images }) => {
       {/* Fullscreen preview overlay */}
       {currentImage && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80">
-          {/* Close button (top-right, always visible) */}
-          <div className="absolute top-4 right-4">
+          {/* Close button (top-right) */}
+          <div className="absolute z-50 top-4 right-4">
             <IconButton
               icon={<CloseIcon fill="white" />}
               onClick={closePreview}
             />
           </div>
 
+          {/* The main preview image (centered) */}
           <div className="relative w-auto max-w-4xl h-auto flex flex-col items-center">
-            {/* The main preview image */}
             <Image
               src={currentImage.src}
               alt={currentImage.alt}
@@ -69,68 +69,33 @@ const GridGallery: React.FC<GridGalleryProps> = ({ images }) => {
               height={800}
               className="rounded"
             />
-
-            {/* MOBILE ARROWS: displayed below the image on small screens */}
-            <div className="mt-4 flex gap-4 md:hidden">
-              {/* Show the left arrow if not at the first image */}
-              {selectedIndex !== 0 && (
-                <IconButton
-                  extraClasses="text-white focus:text-foreground hover:text-foreground"
-                  onClick={goPrevious}
-                  icon={
-                    <ChevronIcon
-                      size={20}
-                      fill="currentColor"
-                      direction="left"
-                    />
-                  }
-                />
-              )}
-
-              {/* Show the right arrow if not at the last image */}
-              {selectedIndex !== images.length - 1 && (
-                <IconButton
-                  extraClasses="text-white focus:text-foreground hover:text-foreground"
-                  onClick={goNext}
-                  icon={
-                    <ChevronIcon
-                      size={20}
-                      direction="right"
-                      fill="currentColor"
-                    />
-                  }
-                />
-              )}
-            </div>
           </div>
 
-          {/* DESKTOP ARROWS: absolute side arrows, only visible on md+ */}
-          {/* Left Arrow */}
+          {/* LEFT HALF OVERLAY (Prev) */}
           {selectedIndex !== 0 && (
-            <div className="hidden md:block absolute left-4">
-              <IconButton
-                extraClasses="text-white focus:text-foreground hover:text-foreground"
-                onClick={goPrevious}
-                icon={
-                  <ChevronIcon size={20} fill="currentColor" direction="left" />
-                }
-              />
+            <div
+              onClick={goPrevious}
+              className="absolute top-0 left-0 h-full w-1/2 cursor-pointer flex items-center justify-start"
+            >
+              {/* 
+                Arrow icon as purely visual indicator 
+                - pointer-events-none ensures clicks go to parent
+              */}
+              <div className="ml-4 text-white pointer-events-none">
+                <ChevronIcon direction="left" size={20} fill="currentColor" />
+              </div>
             </div>
           )}
-          {/* Right Arrow */}
+
+          {/* RIGHT HALF OVERLAY (Next) */}
           {selectedIndex !== images.length - 1 && (
-            <div className="hidden md:block absolute right-4">
-              <IconButton
-                extraClasses="text-white focus:text-foreground hover:text-foreground"
-                onClick={goNext}
-                icon={
-                  <ChevronIcon
-                    size={20}
-                    direction="right"
-                    fill="currentColor"
-                  />
-                }
-              />
+            <div
+              onClick={goNext}
+              className="absolute top-0 right-0 h-full w-1/2 cursor-pointer flex items-center justify-end"
+            >
+              <div className="mr-4 text-white pointer-events-none">
+                <ChevronIcon direction="right" size={20} fill="currentColor" />
+              </div>
             </div>
           )}
         </div>
