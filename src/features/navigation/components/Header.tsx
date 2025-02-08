@@ -5,13 +5,13 @@ import { useMenuConfig } from "@/features/navigation/menuConfig";
 import HeaderUI from "@/components/HeaderUI";
 import Button from "@/components/Button";
 import PhoneIcon from "@/components/icons/PhoneIcon";
-import Logo from "@/features/navigation/components/Logo";
 import { useLanguage } from "@/features/languages/context/LanguageContext";
 import { languageOptions } from "@/features/languages/languageOptions";
 import NavLinkItem from "@/components/NavLinkItem";
 import HamburgerMenu from "@/components/HamburgerMenu";
 import SubMenuButton from "@/components/SubMenuButton";
 import IconButton from "@/components/IconButton";
+import OldLogo from "./OldLogo";
 
 const Header: React.FC = () => {
   const navigationMenu = useMenuConfig(); // Now uses translated labels
@@ -24,7 +24,7 @@ const Header: React.FC = () => {
 
   return (
     <HeaderUI
-      logo={<Logo />}
+      logo={<OldLogo />}
       ctaElements={
         <ul className="flex items-center flex-row">
           <li>

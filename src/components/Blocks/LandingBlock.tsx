@@ -8,9 +8,9 @@ import Image from "next/image";
 interface LandingBlockProps {
   locationButton: {
     title: string;
-    starRating: number;
+    starRating?: number;
     ratingText: string;
-    ratingNumber: number;
+    ratingNumber?: number;
   };
   title: string;
   primaryButton: {

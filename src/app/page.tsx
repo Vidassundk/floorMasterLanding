@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import Background from "@/components/Background";
 import FAQSectionBlock, { FAQItem } from "@/components/Blocks/FaqSesctionBlock";
 import GalleryBlock from "@/components/Blocks/GalleryBlock";
@@ -15,9 +14,12 @@ import ParquetIcon from "@/components/icons/ParquetIcon";
 import ParquetTwoIcon from "@/components/icons/ParquetTwoIcon";
 import BrushIcon from "@/components/icons/BrushIcon";
 import LightBulb from "@/components/icons/LightBulb";
+import { usePlaceRating } from "@/features/places/usePlaceRating";
 
 export default function Home() {
   const { t } = useLanguage();
+
+  const { ratingData } = usePlaceRating();
 
   // Generate FAQ items dynamically from translations
   const faqData: FAQItem[] = Array.from({ length: 10 }, (_, i) => {
@@ -85,9 +87,9 @@ export default function Home() {
       <LandingBlock
         locationButton={{
           title: t("hero.companyName"), // "Rogalando"
-          starRating: 5,
+          starRating: ratingData?.rating,
           ratingText: t("hero.lovedBy"), // "Loved by 3 customers"
-          ratingNumber: 3,
+          ratingNumber: ratingData?.voteCount,
         }}
         title={t("hero.tagline")} // "We deliver expert flooring solutions with speed and precision."
         primaryButton={{

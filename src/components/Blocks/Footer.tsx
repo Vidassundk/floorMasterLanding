@@ -1,10 +1,10 @@
 "use client";
 
 import React from "react";
-import Logo from "@/features/navigation/components/Logo";
 import FooterLinkGroup from "../LinkFooterGroup";
 import { useLanguage } from "@/features/languages/context/LanguageContext";
 import { useLinkGroups } from "@/features/navigation/useLinkGroups";
+import OldLogo from "@/features/navigation/components/OldLogo";
 
 const Footer = () => {
   const linkGroups = useLinkGroups(); // get all footer link groups
@@ -18,7 +18,7 @@ const Footer = () => {
         <div className="md:flex md:justify-between">
           {/* Left: Logo */}
           <div className="mb-6 md:mb-0">
-            <Logo fill="white" />
+            <OldLogo fill="white" />
           </div>
 
           {/* Right: Link Groups */}

@@ -4,29 +4,28 @@ import StarIcon from "./icons/StarIcon";
 import GoogleIcon from "./icons/GoogleIcon";
 
 interface LocationButtonProps {
-  title: string; // Location title
-  ghost?: boolean; // Whether the button is transparent
-  starRating?: number; // Accepts ratings from 0 to 5, including decimals like 3.5
-  showRating?: boolean; // Toggle whether to show the star rating
-  ratingText?: string; // Text for "Loved by {{number}} customers"
-  ratingNumber?: number; // The number to replace in the rating text
+  title: string;
+  ghost?: boolean;
+  starRating?: number;
+  showRating?: boolean;
+  ratingText?: string;
+  ratingNumber?: number;
+  show?: boolean;
 }
 
 const LocationButton: React.FC<LocationButtonProps> = ({
   title,
   ghost = false,
-  starRating = 0, // Default to 0 if not provided
-  showRating = false, // Default to showing the rating
+  starRating,
+  showRating = false,
   ratingText,
-  ratingNumber = 0, // Default rating number
+  ratingNumber,
 }) => {
-  // Render stars based on the rating
   const renderStars = (rating: number) => {
-    const fullStars = Math.floor(rating); // Full stars
-    const halfStar = rating % 1 >= 0.5; // Half star if remainder >= 0.5
-    const emptyStars = 5 - fullStars - (halfStar ? 1 : 0); // Remaining empty stars
+    const fullStars = Math.floor(rating);
+    const halfStar = rating % 1 >= 0.5;
+    const emptyStars = 5 - fullStars - (halfStar ? 1 : 0);
 
-    // Replace {{number}} in the rating text with the actual ratingNumber
     const formattedRatingText = ratingText?.replace(
       "{{number}}",
       String(ratingNumber)
@@ -45,7 +44,6 @@ const LocationButton: React.FC<LocationButtonProps> = ({
           className="flex flex-row items-center gap-1 text-[#FFD700]"
           aria-label={`Rating: ${rating} out of 5 stars`}
         >
-          {/* Render full stars */}
           {Array.from({ length: fullStars }).map((_, index) => (
             <StarIcon
               key={`full-${index}`}
@@ -53,9 +51,7 @@ const LocationButton: React.FC<LocationButtonProps> = ({
               fill="currentColor"
             />
           ))}
-          {/* Render half star if applicable */}
           {halfStar && <StarIcon variant="half" fill="currentColor" />}
-          {/* Render empty stars */}
           {Array.from({ length: emptyStars }).map((_, index) => (
             <StarIcon key={`empty-${index}`} variant="empty" fill="#D3D3D3" />
           ))}
@@ -75,6 +71,7 @@ const LocationButton: React.FC<LocationButtonProps> = ({
           ? "bg-transparent hover:bg-opacity-50"
           : "bg-white hover:bg-gulvGreen text-foreground hover:text-white px-4"
       }`}
+      style={{ opacity: starRating && ratingNumber ? 1 : 0 }}
     >
       {showRating && starRating !== undefined && renderStars(starRating)}
       <span

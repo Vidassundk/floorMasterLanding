@@ -3,6 +3,7 @@ import "./globals.css";
 import { LanguageProvider } from "@/features/languages/context/LanguageContext";
 import Header from "@/features/navigation/components/Header";
 import Footer from "@/components/Blocks/Footer";
+import { PlaceRatingProvider } from "@/features/places/usePlaceRating";
 
 export const metadata: Metadata = {
   title: "Golv Mestere",
@@ -17,11 +18,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`antialiased`}>
-        <LanguageProvider>
-          <Header />
-          {children}
-          <Footer />
-        </LanguageProvider>
+        <PlaceRatingProvider>
+          <LanguageProvider>
+            <Header />
+            {children}
+            <Footer />
+          </LanguageProvider>
+        </PlaceRatingProvider>
       </body>
     </html>
   );
