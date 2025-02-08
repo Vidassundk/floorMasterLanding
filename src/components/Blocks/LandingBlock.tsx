@@ -59,7 +59,7 @@ const LandingBlock: React.FC<LandingBlockProps> = ({
         paddingTop: "115px",
       }}
     >
-      <div className="flex flex-col justify-between h-full gap-y-16 mx-auto lg:pb-16 lg:pt-8 lg:px-12">
+      <div className="flex flex-col justify-between h-full gap-y-16 mx-auto lg:pb-16 lg:px-12">
         {/* Hero Section: Location Button + Title + Buttons */}
         <div className="flex flex-col items-center justify-center text-center gap-y-2 md:gap-y-8">
           <a

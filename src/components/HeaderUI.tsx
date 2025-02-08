@@ -37,7 +37,7 @@ const HeaderUI: React.FC<HeaderUIProps> = ({
         isScrolled ? "bg-white/90 shadow-md bg-background" : "bg-transparent"
       }`}
     >
-      <nav className="py-6 px-4 container mx-auto">
+      <nav className="py-4 px-4 container mx-auto">
         <div className="flex justify-between items-center">
           <div>{logo}</div>
           {navigationElement && navigationElement}

@@ -27,7 +27,7 @@ const Button: React.FC<ButtonProps> = ({
       href={href}
       className={`flex items-center rounded-full justify-center gap-2 ${
         !noPadding ? "py-3 px-6" : ""
-      } text-nowrap font-inter text-md font-medium transition-all duration-200 focus:ring-4 text-lg ${className}`}
+      } text-nowrap font-inter font-medium transition-all duration-200 focus:ring-4 text-lg ${className}`}
       onClick={onClick}
     >
       <span className="sr-only">{accessabilityLabel}</span>
