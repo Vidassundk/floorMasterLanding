@@ -25,7 +25,7 @@ const NavLinkItem: React.FC<MenuItem> = ({
       target={target}
       href={href || ""}
       onClick={onClick}
-      className={`block ${bold} font-inter cursor-pointer hover:opacity-80 ${
+      className={`block ${bold} cursor-pointer hover:opacity-80  ${
         underline ? "underline" : ""
       }`}
     >

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import SectionTitle from "../SectionTitle";
 import LocationButton from "../LocationButton";
 import ServiceCard from "../ServiceCard";
@@ -12,7 +12,7 @@ export interface ServicesBlockProps {
   };
   services: {
     title: string;
-    list: string[]; // Always an array of strings
+    list: string[];
     icon: React.ReactNode;
     mode: "dark" | "light";
     hasFooter?: boolean;
@@ -25,6 +25,11 @@ const ServicesBlock: React.FC<ServicesBlockProps> = ({
   locationButton,
   services,
 }) => {
+  const [hovered, setHovered] = useState(false);
+
+  // Generate random margins for each card
+  const getRandomMargin = () => (Math.random() * 40 + 10).toFixed(0) + "px"; // Between 20px - 80px
+
   return (
     <section id="services-section" className="scroll-m-32">
       <SectionTitle
@@ -39,16 +44,34 @@ const ServicesBlock: React.FC<ServicesBlockProps> = ({
           </a>
         }
       />
-      <div className="container grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 mx-auto my-6">
-        {services.map((service, index) => (
-          <ServiceCard
-            key={index}
-            title={service.title}
-            list={service.list}
-            icon={service.icon}
-            mode={service.mode}
-          />
-        ))}
+      <div
+        id="services-cards"
+        className="container grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 mx-auto my-6 transition-all duration-300"
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+      >
+        {services.map((service, index) => {
+          const marginStyle = hovered
+            ? index % 2 === 0
+              ? { paddingTop: getRandomMargin() }
+              : { paddingBottom: getRandomMargin() }
+            : {}; // Reset margins when not hovered
+
+          return (
+            <div
+              key={index}
+              style={marginStyle}
+              className="transition-all duration-300 ease-in-out"
+            >
+              <ServiceCard
+                title={service.title}
+                list={service.list}
+                icon={service.icon}
+                mode={service.mode}
+              />
+            </div>
+          );
+        })}
       </div>
     </section>
   );

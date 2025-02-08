@@ -23,7 +23,7 @@ const IconLink: React.FC<IconLinkProps> = ({
   bold = "font-semibold",
   iconSize = 20, // Default square size for the icon
 }) => {
-  const baseStyles = `flex items-center gap-4 text-base ${bold} font-inter cursor-pointer hover:opacity-80`;
+  const baseStyles = `flex items-center gap-4 text-base ${bold}  cursor-pointer hover:opacity-80`;
   const ghostStyles = ghost
     ? "bg-transparent hover:bg-opacity-50"
     : "bg-sand hover:bg-gulvGreen text-foreground hover:text-white px-4 py-2 rounded-full";

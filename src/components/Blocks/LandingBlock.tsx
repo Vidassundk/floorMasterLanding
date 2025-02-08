@@ -76,7 +76,7 @@ const LandingBlock: React.FC<LandingBlockProps> = ({
               ratingNumber={locationButton.ratingNumber}
             />
           </a>
-          <h1 className="text-4xl px-4 font-extrabold tracking-tight leading-tight md:text-5xl lg:text-7xl xl:text-8xl text-foreground max-w-6xl mx-auto">
+          <h1 className="text-4xl px-4 font-black tracking-tight leading-tight md:text-5xl lg:text-7xl xl:text-8xl text-foreground max-w-6xl mx-auto">
             {title}
           </h1>
           <div className="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4 mt-10">

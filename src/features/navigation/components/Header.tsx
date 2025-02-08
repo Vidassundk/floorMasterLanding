@@ -24,7 +24,7 @@ const Header: React.FC = () => {
 
   return (
     <HeaderUI
-      logo={<OldLogo />}
+      logo={<OldLogo size={90} />}
       ctaElements={
         <ul className="flex items-center flex-row">
           <li>
@@ -32,16 +32,9 @@ const Header: React.FC = () => {
               href="tel:+4531886266"
               text={t("hero.cta2")}
               icon={<PhoneIcon fill="#f8fafc" />}
-              className="text-base bg-gulvGreen hover:opacity-90 focus:ring-gray-300 text-slate-50 mr-2 md:mr-0 hidden xs:flex"
+              className="text-base bg-gulvGreen hover:opacity-90 focus:ring-gray-300 text-slate-50 mr-2 md:mr-0"
               accessabilityLabel="Call Us Button"
             />
-            <a className="xs:hidden" href="tel:+4531886266" target="_blank">
-              <IconButton
-                roundedClass="rounded-full"
-                extraClasses="bg-gulvGreen text-white hover:text-black rounded-full mr-1 "
-                icon={<PhoneIcon />}
-              />
-            </a>
           </li>
 
           <li className="md:hidden sm:-mr-4">
@@ -87,7 +80,7 @@ const Header: React.FC = () => {
                 align="right"
               >
                 <div className="flex flex-row gap-2 items-center">
-                  <p className="font-bold font-inter cursor-pointer hover:opacity-80">
+                  <p className="font-bold  cursor-pointer hover:opacity-80">
                     {activeLanguage?.label || "Select Language"}
                   </p>
                   <div className="h-4 w-4 flex items-center pb-[2px]">

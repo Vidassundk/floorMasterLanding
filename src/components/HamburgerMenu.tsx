@@ -8,7 +8,8 @@ import IconButton from "./IconButton";
 // 1) Import your linkGroups hook and FooterLinkGroup
 import { useLinkGroups } from "@/features/navigation/useLinkGroups";
 import FooterLinkGroup from "./LinkFooterGroup";
-import Logo from "@/features/navigation/components/Logo";
+
+import OldLogo from "@/features/navigation/components/OldLogo";
 
 const HamburgerMenu: React.FC = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
@@ -66,7 +67,7 @@ const HamburgerMenu: React.FC = () => {
         */}
         <div className="p-4 flex flex-col gap-6 text-foreground">
           <div className="pb-4">
-            <Logo />
+            <OldLogo />
           </div>
           {linkGroups.map((group) => (
             <div

@@ -43,7 +43,7 @@ const SubMenu: React.FC<SubMenuProps> = ({
               onClose();
             }}
             className="flex text-base items-center gap-3 px-6 py-2 text-foreground
-                       font-semibold font-inter hover:bg-gray-100 w-full text-left"
+                       font-semibold  hover:bg-gray-100 w-full text-left"
           >
             {item.icon && (
               <span className="h-5 min-h-5 w-5 min-w-5 flex items-center ">

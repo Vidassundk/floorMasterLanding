@@ -18,7 +18,7 @@ export default {
         brown: "var(--brown)",
       },
       fontFamily: {
-        inter: ["Inter", "sans-serif"],
+        helvetica: ["Helvetica", "Arial", "sans-serif"],
       },
 
       screens: {

@@ -59,6 +59,9 @@ const LocationButton: React.FC<LocationButtonProps> = ({
         <p className="pt-[2px] hidden lg:block leading-none">
           {formattedRatingText}
         </p>
+        <p className="pt-[2px] lg:hidden leading-none">
+          {starRating && ratingNumber && `(${ratingNumber})`}
+        </p>
         <div className={`w-[2px] rounded-full bg-gray-200 h-8`}></div>
       </div>
     );

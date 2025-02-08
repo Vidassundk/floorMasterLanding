@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "Helvetica";
+  src: local("Helvetica"), local("Arial"), sans-serif;
+}
+
+* {
+  font-family: "Helvetica", Arial, sans-serif !important;
+}
+
 :root {
   --background: #e9e5d8;
   --foreground: #291d1d;
@@ -23,5 +32,12 @@ body {
 }
 
 html {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   scroll-behavior: smooth;
+}
+
+img {
+  background-color: var(--sand);
 }
