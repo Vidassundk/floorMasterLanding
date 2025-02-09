@@ -2,7 +2,6 @@
 
 import { MenuItem } from "@/components/NavLinkItem";
 import { useMenuConfig } from "@/features/navigation/menuConfig";
-import { useLanguage } from "../languages/context/LanguageContext";
 
 export interface LinkGroup {
   title: string;
@@ -15,7 +14,6 @@ export interface LinkGroup {
 
 export const useLinkGroups = (): LinkGroup[] => {
   const navigationMenu: MenuItem[] = useMenuConfig();
-  const { t } = useLanguage();
 
   // Convert them to the shape required by FooterLinkGroup, filtering out undefined href
   const navigationLinks = navigationMenu
