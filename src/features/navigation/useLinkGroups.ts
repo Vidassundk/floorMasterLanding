@@ -34,8 +34,9 @@ export const useLinkGroups = (): LinkGroup[] => {
     {
       title: "Contact",
       links: [
-        { href: "tel:+4531886266", text: t("hero.cta2") },
-        { href: "mailto:info@gulvmestere.no", text: t("hero.cta3") },
+        { href: "tel:+4748619643", text: "+4748619643" },
+        { href: "tel:+4746268062", text: "+4746268062" },
+        { href: "mailto:info@gulvmestere.no", text: "info@gulvmestere.no" },
       ],
     },
     {

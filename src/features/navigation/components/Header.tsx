@@ -29,7 +29,7 @@ const Header: React.FC = () => {
         <ul className="flex items-center flex-row">
           <li>
             <Button
-              href="tel:+4531886266"
+              href="tel:+4748619643"
               text={t("hero.cta2")}
               icon={<PhoneIcon fill="#f8fafc" />}
               className="text-base bg-gulvGreen hover:opacity-90 focus:ring-gray-300 text-slate-50 mr-2 md:mr-0"

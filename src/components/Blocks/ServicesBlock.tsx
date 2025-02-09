@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import SectionTitle from "../SectionTitle";
 import LocationButton from "../LocationButton";
 import ServiceCard from "../ServiceCard";
@@ -26,9 +26,23 @@ const ServicesBlock: React.FC<ServicesBlockProps> = ({
   services,
 }) => {
   const [hovered, setHovered] = useState(false);
+  const [isLargeScreen, setIsLargeScreen] = useState(
+    typeof window !== "undefined" ? window.innerWidth >= 1024 : false
+  );
 
   // Generate random margins for each card
   const getRandomMargin = () => (Math.random() * 40 + 10).toFixed(0) + "px"; // Between 20px - 80px
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsLargeScreen(window.innerWidth >= 1024); // Tailwind lg breakpoint (1024px)
+    };
+
+    window.addEventListener("resize", handleResize);
+    handleResize(); // Initialize on mount
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <section id="services-section" className="scroll-m-32">
@@ -47,15 +61,16 @@ const ServicesBlock: React.FC<ServicesBlockProps> = ({
       <div
         id="services-cards"
         className="container grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 mx-auto my-6 transition-all duration-300"
-        onMouseEnter={() => setHovered(true)}
-        onMouseLeave={() => setHovered(false)}
+        onMouseEnter={() => isLargeScreen && setHovered(true)}
+        onMouseLeave={() => isLargeScreen && setHovered(false)}
       >
         {services.map((service, index) => {
-          const marginStyle = hovered
-            ? index % 2 === 0
-              ? { paddingTop: getRandomMargin() }
-              : { paddingBottom: getRandomMargin() }
-            : {}; // Reset margins when not hovered
+          const marginStyle =
+            hovered && isLargeScreen
+              ? index % 2 === 0
+                ? { paddingTop: getRandomMargin() }
+                : { paddingBottom: getRandomMargin() }
+              : {};
 
           return (
             <div

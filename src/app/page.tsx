@@ -94,7 +94,7 @@ export default function Home() {
         title={t("hero.tagline")} // "We deliver expert flooring solutions with speed and precision."
         primaryButton={{
           text: t("hero.cta"), // "Start Your Flooring Project"
-          href: "tel:+4531886266",
+          href: "tel:+4748619643",
           icon: <PhoneIcon fill="#f8fafc" />,
           accessibilityLabel: t("hero.cta2"), // "Call Us"
         }}
