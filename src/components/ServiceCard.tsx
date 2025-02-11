@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion"; // Import Framer Motion
 
 interface ServiceCardProps {
   icon: React.ReactNode;
@@ -14,7 +15,13 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
   mode,
 }) => {
   return (
-    <div className="flex flex-col h-full transition-all">
+    <motion.div
+      className="flex flex-col h-full transition-all"
+      whileHover={{
+        opacity: 0.9, // Slight transparency effect
+      }}
+      transition={{ duration: 0.3, ease: "easeOut" }} // Smooth transition
+    >
       {/* Card Container */}
       <div
         className={`
@@ -33,14 +40,17 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
         `}
       >
         <div className="grid grid-rows-[80px,100px,1fr] h-full w-full py-20">
+          {/* Icon */}
           <div className="h-full w-full flex justify-center items-end pb-4 transition-all duration-300">
             <div className="transition-all duration-300">{icon}</div>
           </div>
 
+          {/* Title */}
           <h2 className="text-2xl font-bold flex items-center justify-center transition-all duration-300">
             {title}
           </h2>
 
+          {/* List */}
           <ul className="flex flex-col gap-4 h-full mt-4">
             {(list || []).map((item, index) => (
               <li key={index}>{item}</li>
@@ -48,7 +58,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
           </ul>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

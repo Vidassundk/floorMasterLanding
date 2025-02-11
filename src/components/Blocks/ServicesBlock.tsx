@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { motion } from "framer-motion"; // Import Framer Motion
 import SectionTitle from "../SectionTitle";
 import LocationButton from "../LocationButton";
@@ -26,25 +26,6 @@ const ServicesBlock: React.FC<ServicesBlockProps> = ({
   locationButton,
   services,
 }) => {
-  const [hovered, setHovered] = useState(false);
-  const [isLargeScreen, setIsLargeScreen] = useState(
-    typeof window !== "undefined" ? window.innerWidth >= 1024 : false
-  );
-
-  // Generate random margins for each card
-  const getRandomMargin = () => (Math.random() * 40 + 10).toFixed(0) + "px"; // Between 20px - 80px
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsLargeScreen(window.innerWidth >= 1024); // Tailwind lg breakpoint (1024px)
-    };
-
-    window.addEventListener("resize", handleResize);
-    handleResize(); // Initialize on mount
-
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
   return (
     <motion.section
       id="services-section"
@@ -68,21 +49,11 @@ const ServicesBlock: React.FC<ServicesBlockProps> = ({
       <div
         id="services-cards"
         className="container grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 mx-auto my-6 transition-all duration-300"
-        onMouseEnter={() => isLargeScreen && setHovered(true)}
-        onMouseLeave={() => isLargeScreen && setHovered(false)}
       >
         {services.map((service, index) => {
-          const marginStyle =
-            hovered && isLargeScreen
-              ? index % 2 === 0
-                ? { paddingTop: getRandomMargin() }
-                : { paddingBottom: getRandomMargin() }
-              : {};
-
           return (
             <motion.div
               key={index}
-              style={marginStyle}
               className="transition-all duration-300 ease-in-out"
               initial={{ opacity: 0, y: 40 + index * 10 }} // Each service fades in & moves up with a different speed
               animate={{ opacity: 1, y: 0 }}
