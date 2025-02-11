@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion"; // Import Framer Motion
 import SectionTitle from "../SectionTitle";
 import LocationButton from "../LocationButton";
 import ServiceCard from "../ServiceCard";
@@ -45,7 +46,13 @@ const ServicesBlock: React.FC<ServicesBlockProps> = ({
   }, []);
 
   return (
-    <section id="services-section" className="scroll-m-32">
+    <motion.section
+      id="services-section"
+      className="scroll-m-32"
+      initial={{ opacity: 0, y: 50 }} // Start hidden & move up
+      animate={{ opacity: 1, y: 0 }} // Fade in & move to normal position
+      transition={{ duration: 0.8, ease: "easeOut" }} // Smooth transition
+    >
       <SectionTitle
         title={sectionTitle}
         subTitle={sectionSubtitle}
@@ -73,10 +80,17 @@ const ServicesBlock: React.FC<ServicesBlockProps> = ({
               : {};
 
           return (
-            <div
+            <motion.div
               key={index}
               style={marginStyle}
               className="transition-all duration-300 ease-in-out"
+              initial={{ opacity: 0, y: 40 + index * 10 }} // Each service fades in & moves up with a different speed
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                duration: 0.6,
+                ease: "easeOut",
+                delay: index * 0.15,
+              }} // Staggered effect
             >
               <ServiceCard
                 title={service.title}
@@ -84,11 +98,11 @@ const ServicesBlock: React.FC<ServicesBlockProps> = ({
                 icon={service.icon}
                 mode={service.mode}
               />
-            </div>
+            </motion.div>
           );
         })}
       </div>
-    </section>
+    </motion.section>
   );
 };
 
