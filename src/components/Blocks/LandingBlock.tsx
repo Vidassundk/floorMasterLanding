@@ -85,6 +85,7 @@ const LandingBlock: React.FC<LandingBlockProps> = ({
                   starRating={locationButton.starRating}
                   ratingText={locationButton.ratingText}
                   ratingNumber={locationButton.ratingNumber}
+                  showRating={true}
                 />
               )}
           </motion.a>

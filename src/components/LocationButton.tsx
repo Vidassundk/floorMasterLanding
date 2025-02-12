@@ -7,6 +7,7 @@ interface LocationButtonProps {
   title: string;
   ghost?: boolean;
   starRating?: number;
+  showRating?: boolean;
   ratingText?: string;
   ratingNumber?: number;
   show?: boolean;
@@ -16,6 +17,7 @@ const LocationButton: React.FC<LocationButtonProps> = ({
   title,
   ghost = false,
   starRating,
+  showRating = false,
   ratingText,
   ratingNumber,
 }) => {
@@ -73,7 +75,7 @@ const LocationButton: React.FC<LocationButtonProps> = ({
           : "bg-white hover:bg-gulvGreen text-foreground hover:text-white px-4"
       }`}
     >
-      {renderStars(starRating || 5)}
+      {showRating && starRating !== undefined && renderStars(starRating)}
       <span
         className={`${
           ghost ? "text-gulvGreen" : "text-gulvGreen group-hover:text-white"
