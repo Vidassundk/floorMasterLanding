@@ -50,10 +50,6 @@ export const useLinkGroups = (): LinkGroup[] => {
           text: "Instagram",
           target: "_blank",
         },
-        {
-          href: "mbwapp://callback",
-          text: "@",
-        },
       ],
     },
   ];
